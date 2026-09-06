@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package jsonvsprotobuf;
+
+message Object {
+    int32 object_id = 1;
+    string title = 2;
+    string description = 3;
+    string time_start = 4;
+    string time_end = 5;
+    float price = 6;
+    string url = 7;
+}
+
+message ObjectColl {
+    repeated Object objects = 1;
+}

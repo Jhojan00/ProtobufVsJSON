@@ -2,4 +2,7 @@
 name = "protobufvsjson"
 version = "0.1.0"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "faker>=40.38.0",
+    "protobuf>=7.36.1",
+]
