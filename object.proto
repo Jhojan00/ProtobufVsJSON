@@ -15,3 +15,12 @@ message Object {
 message ObjectColl {
     repeated Object objects = 1;
 }
+
+message ObjectResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+service ObjectService {
+    rpc SendObject(Object) returns (ObjectResponse);
+}

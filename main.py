@@ -8,7 +8,7 @@ from proto import create_coll
 from utils import get_dummies
 
 json_path = Path("json_serialized.json")
-proto_path = Path("proto_serialized.json")
+proto_path = Path("proto_serialized.pb")
 DUMMIED_AMOUNT = 10000
 
 
