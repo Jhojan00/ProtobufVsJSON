@@ -9,6 +9,7 @@ from utils import get_dummies
 
 json_path = Path("json_serialized.json")
 proto_path = Path("proto_serialized.json")
+DUMMIED_AMOUNT = 10000
 
 
 def process_json(objs: list[dict]):
@@ -20,7 +21,7 @@ def process_json(objs: list[dict]):
 
     print(f"\nLoading from file: {json_path}")
     objs = json_s.read_from_file(json_path)
-    print("\nDone.")
+    print("Done.")
 
     del objs
 
@@ -34,7 +35,7 @@ def process_proto(objs: list[dict]):
 
     print(f"\nLoading from file: {proto_path}")
     coll = proto.read_from_file(proto_path)
-    print("\nDone.")
+    print("Done.")
 
     del coll
 
@@ -63,15 +64,19 @@ def print_stats(json_objs: list, protobuf_objs: list):
     print("Time:")
     print(f"\tJSON: {time_json} s.")
     print(f"\tProtobuf: {time_proto} s.")
+    print(f"\tJSON is {(time_json / time_proto):.3f} slower tan Protobuf.")
 
-    print("Size:")
-    print(f"\tJSON: {os.path.getsize(json_path)} bytes.")
-    print(f"\tProtobuf: {os.path.getsize(proto_path)} bytes.")
+    json_size = os.path.getsize(json_path)
+    proto_size = os.path.getsize(proto_path)
+    print("\nSize:")
+    print(f"\tJSON: {json_size} bytes.")
+    print(f"\tProtobuf: {proto_size} bytes.")
+    print(f"\tJSON is {(json_size / proto_size):.3f} bigger tan Protobuf.")
 
 
 def main():
 
-    dummies = get_dummies(10000)
+    dummies = get_dummies(DUMMIED_AMOUNT)
     dummies = list(dummies)
 
     protobuf = dummies[:]
